@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    kotlin("plugin.serialization") version "1.9.0"
 }
 
 android {
@@ -49,9 +50,16 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation(libs.rxjava.android)
+    implementation(libs.squareup.retrofit)
     implementation(libs.timber)
+    implementation(libs.kotlinx.serialization)
+    implementation(libs.jakewarton.retrofit.converter)
+
     testImplementation(libs.junit)
+    testImplementation(libs.google.truth)
+    testImplementation(libs.kotlinx.coroutines.testing)
+    testImplementation(libs.okhttp.mockwebserver)
+    testImplementation(libs.roboelectric)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
