@@ -11,17 +11,18 @@ class CharacterDtoTest {
         image = "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
         name = "Rick Sanchez",
         species = "Human",
-        status = "Alive",
+        status = null,
         type = "human",
-        url = "https://rickandmortyapi.com/api/character/1"
+        url = null
     )
 
     @Test
     fun `toCharacterModel returns correct character model`() {
         val character = testModel.toCharacter()
-        assertThat(character.url).isEqualTo(testModel.url)
+        assertThat(character.url).isEmpty()
         assertThat(character.name).isEqualTo(testModel.name)
         assertThat(character.gender).isEqualTo(testModel.gender)
         assertThat(character.id).isEqualTo(testModel.id)
+        assertThat(character.status).isEmpty()
     }
 }
