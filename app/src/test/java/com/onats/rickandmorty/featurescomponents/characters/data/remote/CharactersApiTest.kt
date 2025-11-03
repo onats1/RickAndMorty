@@ -48,9 +48,9 @@ class CharactersApiTest {
     @Test
     fun `getAllCharacters should hit correct endpoint`() = runTest {
         mockWebServer.enqueue(MockResponse().setBody("{}").setResponseCode(200))
-        val expectedEndPoint = "/api/character"
+        val expectedEndPoint = "/api/character?page=1"
 
-        charactersApi.getAllCharacters()
+        charactersApi.getAllCharacters(page = 1)
 
         val request = mockWebServer.takeRequest()
         assertThat(request.path).isEqualTo(expectedEndPoint)
