@@ -14,6 +14,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
+import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
 import retrofit2.Response
 
@@ -37,10 +38,12 @@ class CharacterPagingSourceTest {
 
         val result = pager.refresh() as PagingSource.LoadResult.Page
 
+        //Verify that getAllCharacters was called
+        verify(mockCharacterApi).getAllCharacters(1)
+
         assertThat(result.data)
             .containsExactlyElementsIn(characters)
             .inOrder()
-
     }
 
     @Test
@@ -54,6 +57,8 @@ class CharacterPagingSourceTest {
 
         val result = pager.refresh()
 
+        //Verify that getAllCharacters was called
+        verify(mockCharacterApi).getAllCharacters(1)
         assertThat(result).isInstanceOf(PagingSource.LoadResult.Error::class.java)
     }
 
@@ -69,6 +74,8 @@ class CharacterPagingSourceTest {
 
         val result = pager.refresh()
 
+        //Verify that getAllCharacters was called
+        verify(mockCharacterApi).getAllCharacters(1)
         assertThat(result).isInstanceOf(PagingSource.LoadResult.Error::class.java)
     }
 }
