@@ -1,4 +1,4 @@
-package com.onats.rickandmorty.featurespresentation.characters
+package com.onats.rickandmorty.featurespresentation.episodes
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -7,8 +7,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
 @Composable
-fun CharactersScreen(modifier: Modifier = Modifier) {
+fun EpisodesScreen(modifier: Modifier = Modifier) {
     Scaffold { innerPadding ->
-        Text(text = "Characters", modifier = modifier.padding(innerPadding))
+        Text(text = "Episodes", modifier = modifier.padding(innerPadding))
     }
 }

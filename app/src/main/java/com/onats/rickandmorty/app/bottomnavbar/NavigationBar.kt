@@ -26,19 +26,22 @@ fun BottomNavBar(navController: NavController, modifier: Modifier = Modifier) {
         mutableIntStateOf(0)
     }
 
-    BottomNavBar(selectedNavigationIndex, navController)
+    BottomNavBar(selectedNavigationIndex, navController, modifier)
 }
 
 @Composable
-private fun BottomNavBar(selectedNavigationIndex: MutableIntState, navController: NavController) {
+private fun BottomNavBar(selectedNavigationIndex: MutableIntState, navController: NavController, modifier: Modifier) {
     NavigationBar(
-        containerColor = Color.White
+        containerColor = Color.White,
+        modifier = modifier
     ) {
         navigationItems.forEachIndexed { index, item ->
             NavigationBarItem(
-                modifier = Modifier.testTag("${item.route}_test_route").semantics {
-                    contentDescription = "${item.route}_navigation_bar_item"
-                },
+                modifier = Modifier
+                    .testTag("${item.route}_test_route")
+                    .semantics {
+                        contentDescription = "${item.route}_navigation_bar_item"
+                    },
                 selected = selectedNavigationIndex.intValue == index,
                 onClick = {
                     selectedNavigationIndex.intValue = index
