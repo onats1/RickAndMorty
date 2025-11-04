@@ -7,15 +7,15 @@ import androidx.paging.map
 import com.onats.rickandmorty.featurescomponents.characters.data.paging.CharacterPagingSource
 import com.onats.rickandmorty.featurescomponents.characters.data.remote.models.CharacterDto
 import com.onats.rickandmorty.featurescomponents.characters.data.remote.models.toCharacter
+import com.onats.rickandmorty.featurescomponents.characters.domain.CharacterRepository
 import com.onats.rickandmorty.featurescomponents.characters.domain.models.Character
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-class CharacterRepository(
+class CharacterRepositoryImpl(
     private val characterPagingSource: CharacterPagingSource
-) {
-
-    fun getAllCharacters(): Flow<PagingData<Character>> {
+): CharacterRepository {
+    override fun getAllCharacters(): Flow<PagingData<Character>> {
         return Pager(
             config = PagingConfig(pageSize = 20),
             pagingSourceFactory = { characterPagingSource }

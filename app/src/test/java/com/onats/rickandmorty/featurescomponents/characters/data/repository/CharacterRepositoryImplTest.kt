@@ -7,6 +7,7 @@ import com.onats.rickandmorty.featurescomponents.characters.data.fakes.fakeChara
 import com.onats.rickandmorty.featurescomponents.characters.data.paging.CharacterPagingSource
 import com.onats.rickandmorty.featurescomponents.characters.data.remote.CharactersApi
 import com.onats.rickandmorty.featurescomponents.characters.data.remote.models.toCharacter
+import com.onats.rickandmorty.featurescomponents.characters.domain.CharacterRepository
 import com.onats.rickandmorty.featurescomponents.utils.MainDispatcherRule
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
@@ -20,7 +21,7 @@ import org.mockito.kotlin.whenever
 import retrofit2.Response
 
 @RunWith(MockitoJUnitRunner::class)
-class CharacterRepositoryTest {
+class CharacterRepositoryImplTest {
 
     @Mock
     private lateinit var characterApi: CharactersApi
@@ -35,7 +36,7 @@ class CharacterRepositoryTest {
     @Before
     fun setup() {
         characterPagingSource = CharacterPagingSource(characterApi)
-        characterRepository = CharacterRepository(characterPagingSource)
+        characterRepository = CharacterRepositoryImpl(characterPagingSource)
     }
 
     @Test
