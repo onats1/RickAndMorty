@@ -62,6 +62,7 @@ dependencies {
     implementation(libs.androidx.pagination)
     implementation(libs.androidx.paging.compose)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.coil.compose)
 
     testImplementation(libs.androidx.navigation.testing.android)
     testImplementation(libs.androidx.compose.ui.test)
