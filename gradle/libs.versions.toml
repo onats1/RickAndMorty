@@ -19,6 +19,8 @@ roboelectric = "4.13"
 pagingVersion = "3.2.1"
 mockito = "5.20.0"
 mockitoKotlin = "5.4.0"
+androidxNavigationCompose = "2.9.5"
+navigationTestingAndroid = "2.9.5"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -38,6 +40,8 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 androidx-pagination = { group = "androidx.paging", name = "paging-runtime-ktx", version.ref = "pagingVersion" }
 androidx-paging-compose = { group = "androidx.paging", name = "paging-compose", version.ref = "pagingVersion" }
 androidx-pagination-test = { group = "androidx.paging", name = "paging-testing", version.ref = "pagingVersion" }
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidxNavigationCompose" }
+androidx-compose-ui-test = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 kotlinx-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
 kotlinx-coroutines-testing = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
 squareup-retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
@@ -50,6 +54,7 @@ mockito-kotlin = { group = "org.mockito.kotlin", name = "mockito-kotlin", versio
 
 
 timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "timberVersion" }
+androidx-navigation-testing-android = { group = "androidx.navigation", name = "navigation-testing-android", version.ref = "navigationTestingAndroid" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

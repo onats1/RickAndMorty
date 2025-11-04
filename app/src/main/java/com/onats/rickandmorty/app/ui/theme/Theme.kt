@@ -1,6 +1,5 @@
-package com.onats.rickandmorty.ui.theme
+package com.onats.rickandmorty.app.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

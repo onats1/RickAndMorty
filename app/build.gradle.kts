@@ -12,7 +12,7 @@ android {
     defaultConfig {
         applicationId = "com.onats.rickandmorty"
         minSdk = 24
-        targetSdk = 36
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -31,6 +31,11 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
+    }
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
     }
     kotlinOptions {
         jvmTarget = "11"
@@ -56,11 +61,12 @@ dependencies {
     implementation(libs.jakewarton.retrofit.converter)
     implementation(libs.androidx.pagination)
     implementation(libs.androidx.paging.compose)
+    implementation(libs.androidx.navigation.compose)
 
+    testImplementation(libs.androidx.navigation.testing.android)
+    testImplementation(libs.androidx.compose.ui.test)
     testImplementation(libs.mockito.kotlin)
     testImplementation(libs.mockito.mockitocore)
- //   testImplementation("org.mockito:mockito-core:5.12.0")
- //   testImplementation("org.mockito.kotlin:mockito-kotlin:5.4.0")
     testImplementation(libs.junit)
     testImplementation(libs.androidx.pagination.test)
     testImplementation(libs.google.truth)

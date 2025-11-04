@@ -1,4 +1,4 @@
-package com.onats.rickandmorty.ui.theme
+package com.onats.rickandmorty.app.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
