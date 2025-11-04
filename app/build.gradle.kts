@@ -2,7 +2,9 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("com.google.dagger.hilt.android")
     kotlin("plugin.serialization") version "1.9.0"
+    kotlin("kapt")
 }
 
 android {
@@ -63,6 +65,11 @@ dependencies {
     implementation(libs.androidx.paging.compose)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.coil.compose)
+    implementation(libs.dagger.hilt)
+    implementation(libs.dagger.hilt.navigation.compose)
+    implementation(libs.androidx.viewmodel.compose)
+    implementation(libs.okhttp.logging.interceptor)
+    kapt(libs.dagger.hilt.compiler)
 
     testImplementation(libs.androidx.navigation.testing.android)
     testImplementation(libs.androidx.compose.ui.test)

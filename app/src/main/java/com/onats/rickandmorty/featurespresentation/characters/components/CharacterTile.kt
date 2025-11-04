@@ -12,6 +12,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CardElevation
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -36,14 +39,12 @@ fun CharacterTile(
     character: Character,
     onClick: () -> Unit
 ) {
-    Surface(
+    Card (
         modifier = modifier
             .fillMaxWidth()
-            .height(height = 200.dp)
-            .background(color = Color.Gray)
-            .then(Modifier.clickable { onClick() }),
-        tonalElevation = 0.dp,
-        color = MaterialTheme.colorScheme.surface,
+            .height(height = 150.dp)
+            .clickable { onClick() },
+        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
         shape = RoundedCornerShape(12.dp),
     ) {
         Row(
@@ -65,7 +66,6 @@ fun CharacterTile(
 
             Spacer(modifier = Modifier.width(12.dp))
 
-            // Text column
             Column(
                 modifier = Modifier
                     .weight(1f)
