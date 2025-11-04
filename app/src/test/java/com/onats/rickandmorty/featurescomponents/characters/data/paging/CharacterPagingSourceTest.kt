@@ -7,7 +7,6 @@ import com.google.common.truth.Truth.assertThat
 import com.onats.rickandmorty.featurescomponents.characters.data.fakes.fakeCharacterResponse
 import com.onats.rickandmorty.featurescomponents.characters.data.fakes.fakeCharactersDto
 import com.onats.rickandmorty.featurescomponents.characters.data.remote.CharactersApi
-import com.onats.rickandmorty.featurescomponents.characters.data.remote.models.toCharacter
 import kotlinx.coroutines.test.runTest
 import okhttp3.ResponseBody
 import org.junit.Test
@@ -34,7 +33,7 @@ class CharacterPagingSourceTest {
             config = PagingConfig(pageSize = 10)
         )
 
-        val characters = fakeCharactersDto.map { it.toCharacter() }
+        val characters = fakeCharactersDto
 
         val result = pager.refresh() as PagingSource.LoadResult.Page
 
