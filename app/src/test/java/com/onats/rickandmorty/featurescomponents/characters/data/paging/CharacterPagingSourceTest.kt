@@ -9,6 +9,7 @@ import com.onats.rickandmorty.featurescomponents.characters.data.fakes.fakeChara
 import com.onats.rickandmorty.featurescomponents.characters.data.remote.CharactersApi
 import kotlinx.coroutines.test.runTest
 import okhttp3.ResponseBody
+import okhttp3.ResponseBody.Companion.toResponseBody
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
@@ -47,7 +48,7 @@ class CharacterPagingSourceTest {
 
     @Test
     fun `load returns error on error loading data`() = runTest {
-        whenever(mockCharacterApi.getAllCharacters(1)).thenReturn(Response.error(404, ResponseBody.Companion.EMPTY))
+        whenever(mockCharacterApi.getAllCharacters(1)).thenReturn(Response.error(404, "".toResponseBody()))
         val pagingSource = CharacterPagingSource(mockCharacterApi)
         val pager = TestPager(
             pagingSource = pagingSource,
