@@ -18,7 +18,13 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.onats.rickandmorty.HiltTestRunner"
+    }
+
+    packaging {
+        resources {
+            excludes += "META-INF/versions/9/OSGI-INF/MANIFEST.MF"
+        }
     }
 
     buildTypes {
@@ -72,6 +78,7 @@ dependencies {
     kapt(libs.dagger.hilt.compiler)
 
     testImplementation(libs.androidx.navigation.testing.android)
+    testImplementation(libs.androidx.core.testing)
     testImplementation(libs.androidx.compose.ui.test)
     testImplementation(libs.mockito.kotlin)
     testImplementation(libs.mockito.mockitocore)
@@ -81,6 +88,11 @@ dependencies {
     testImplementation(libs.kotlinx.coroutines.testing)
     testImplementation(libs.okhttp.mockwebserver)
     testImplementation(libs.roboelectric)
+    kaptAndroidTest(libs.hilt.android.compiler)
+   // androidTestImplementation(libs.roboelectric)
+    androidTestImplementation(libs.okhttp.mockwebserver)
+    androidTestImplementation(libs.androidx.core.testing)
+    androidTestImplementation(libs.hilt.android.testing)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))

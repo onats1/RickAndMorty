@@ -9,18 +9,18 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.focusModifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.onats.rickandmorty.app.utils.TestTags
 import com.onats.rickandmorty.featurescomponents.characters.domain.models.Character
 import com.onats.rickandmorty.featurespresentation.characters.components.CharacterTile
 import com.onats.rickandmorty.featurespresentation.characters.viewmodel.CharactersViewModel
 import kotlinx.coroutines.flow.flowOf
-
-
 
 @Composable
 fun CharactersScreen(
@@ -32,19 +32,20 @@ fun CharactersScreen(
 }
 
 @Composable
-private fun CharactersScreen(
+fun CharactersScreen(
     modifier: Modifier = Modifier,
     characters: LazyPagingItems<Character>
 ) {
     Scaffold(modifier = modifier) { innerPadding ->
         LazyColumn(
-            modifier = Modifier.padding(innerPadding),
+            modifier = Modifier.padding(innerPadding)
+                .testTag(TestTags.CHARACTERS_SCREEN_LAZY_COLUMN),
             contentPadding = PaddingValues(vertical = 4.dp),
             verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
             items(characters.itemCount) { index ->
                 val character = characters[index] ?: Character.model
-                CharacterTile(character = character) {
+                CharacterTile(character = character, modifier = Modifier.testTag("CHARACTER_ITEM_${character.id}")) {
 
                 }
             }
