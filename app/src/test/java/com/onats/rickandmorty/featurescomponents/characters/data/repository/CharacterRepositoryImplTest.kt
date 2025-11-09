@@ -54,6 +54,4 @@ class CharacterRepositoryImplTest {
         assertThat(pagingData.size).isEqualTo(characters.size)
         assertThat(pagingData).containsExactlyElementsIn(characters)
     }
-
-
 }

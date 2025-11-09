@@ -109,7 +109,6 @@ fun PreviewCharactersScreen() {
         )
     )
 
-
     val pagingItems = flowOf(PagingData.from(sampleCharacters))
         .collectAsLazyPagingItems()
     CharactersScreen(

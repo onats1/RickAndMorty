@@ -1,9 +1,9 @@
-package com.onats.rickandmorty.featurespresentation.characters.viewmodel
+package com.onats.rickandmorty.featurespresentation.episodes.viewmodel
 
 import androidx.paging.testing.asSnapshot
 import com.google.common.truth.Truth.assertThat
-import com.onats.rickandmorty.featurescomponents.characters.data.fakes.FakeCharacterRepositoryImpl
-import com.onats.rickandmorty.featurescomponents.characters.domain.usecase.GetAllCharactersUseCase
+import com.onats.rickandmorty.featurescomponents.episodes.data.fakes.FakeEpisodeRepositoryImpl
+import com.onats.rickandmorty.featurescomponents.episodes.domain.usecase.GetAllEpisodesUseCase
 import com.onats.rickandmorty.featurescomponents.utils.MainDispatcherRule
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.advanceUntilIdle
@@ -16,28 +16,26 @@ import org.mockito.junit.MockitoJUnitRunner
 
 @OptIn(ExperimentalCoroutinesApi::class)
 @RunWith(MockitoJUnitRunner::class)
-class CharactersViewModelTest {
+class EpisodesViewModelTest {
 
     @get:Rule
     val mainDispatcherRule = MainDispatcherRule()
 
-    private lateinit var getAllCharactersUseCase: GetAllCharactersUseCase
+    private lateinit var getAllEpisodesUseCase: GetAllEpisodesUseCase
 
-    private lateinit var viewModel: CharactersViewModel
+    private lateinit var viewModel: EpisodesViewModel
 
     @Before
     fun setup() {
-        getAllCharactersUseCase = GetAllCharactersUseCase(FakeCharacterRepositoryImpl())
+        getAllEpisodesUseCase = GetAllEpisodesUseCase(FakeEpisodeRepositoryImpl())
     }
 
     @Test
-    fun `test that viewModel can get all characters`() = runTest {
-        viewModel = CharactersViewModel(getAllCharactersUseCase)
+    fun `test that viewModel can get all episodes`() = runTest {
+        viewModel = EpisodesViewModel(getAllEpisodesUseCase)
 
-        val result = viewModel.characters.asSnapshot()
+        val result = viewModel.episodes.asSnapshot()
         advanceUntilIdle()
         assertThat(result).isNotEmpty()
     }
-
-
 }

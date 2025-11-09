@@ -8,4 +8,16 @@ data class Episode(
     val episode: String,
     val name: String,
     val url: String
-)
+) {
+    companion object Default {
+        val model = Episode(
+            id = 0,
+            airDate = "",
+            characters = emptyList(),
+            created = "",
+            episode = "",
+            name = "",
+            url = ""
+        )
+    }
+}
