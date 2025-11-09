@@ -1,11 +1,11 @@
 package com.onats.rickandmorty.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import com.onats.rickandmorty.featurescomponents.characters.data.paging.CharacterPagingSource
-import com.onats.rickandmorty.featurescomponents.characters.data.remote.CharactersApi
-import com.onats.rickandmorty.featurescomponents.characters.data.repository.CharacterRepositoryImpl
-import com.onats.rickandmorty.featurescomponents.characters.domain.CharacterRepository
-import com.onats.rickandmorty.featurescomponents.characters.domain.usecase.GetAllCharactersUseCase
+import com.onats.rickandmorty.featurescomponents.episodes.data.paging.EpisodePagingSource
+import com.onats.rickandmorty.featurescomponents.episodes.data.remote.EpisodesApi
+import com.onats.rickandmorty.featurescomponents.episodes.data.repository.EpisodesRepositoryImpl
+import com.onats.rickandmorty.featurescomponents.episodes.domain.EpisodesRepository
+import com.onats.rickandmorty.featurescomponents.episodes.domain.usecase.GetAllEpisodesUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,7 +19,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object CharactersModule {
+object EpisodesModule {
 
     private val json = Json {
         coerceInputValues = true
@@ -28,7 +28,7 @@ object CharactersModule {
 
     @Provides
     @Singleton
-    fun provideCharactersApi(): CharactersApi {
+    fun provideEpisodesApi(): EpisodesApi {
         val contentType = "application/json".toMediaType()
         val logging = HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
@@ -42,29 +42,29 @@ object CharactersModule {
             .addConverterFactory(json.asConverterFactory(contentType))
             .client(okHttpClient)
             .build()
-            .create(CharactersApi::class.java)
+            .create(EpisodesApi::class.java)
     }
 
     @Provides
     @Singleton
-    fun provideCharacterPagingSource(charactersApi: CharactersApi): CharacterPagingSource {
-        return CharacterPagingSource(charactersApi)
+    fun provideEpisodePagingSource(episodesApi: EpisodesApi): EpisodePagingSource {
+        return EpisodePagingSource(episodesApi)
     }
 
     @Provides
     @Singleton
-    fun provideCharactersRepository(
-        characterPagingSource: CharacterPagingSource
-    ): CharacterRepository {
-        return CharacterRepositoryImpl(characterPagingSource = characterPagingSource)
+    fun provideEpisodesRepository(
+        episodePagingSource: EpisodePagingSource
+    ): EpisodesRepository {
+        return EpisodesRepositoryImpl(episodesPagingSource = episodePagingSource)
     }
 
     @Provides
     @Singleton
-    fun provideCharactersUseCase(
-        characterRepository: CharacterRepository
-    ): GetAllCharactersUseCase {
-        return GetAllCharactersUseCase(characterRepository)
+    fun provideEpisodesUseCase(
+        episodesRepository: EpisodesRepository
+    ): GetAllEpisodesUseCase {
+        return GetAllEpisodesUseCase(episodesRepository)
     }
 
 }

@@ -5,4 +5,5 @@ object TestTags {
     const val BOTTOM_NAV_BAR = "bottom_nav_bar_test_tag"
     const val CHARACTERS_SCREEN = "characters_screen_test_tag"
     const val EPISODES_SCREEN = "episodes_screen_test_tag"
+    const val EPISODES_SCREEN_LAZY_COLUMN = "episodes_screen_lazy_column_test_tag"
 }
